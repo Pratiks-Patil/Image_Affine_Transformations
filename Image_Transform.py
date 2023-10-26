@@ -31,7 +31,7 @@ if uploaded_image is not None:
     st.image(image, caption='Uploaded Image', use_column_width=True)
 
     # Select transformation type
-    transformation_type = st.selectbox("Select Transformation Type", ["Translation", "Rotation", "Scaling", "Shearing"])
+    transformation_type = st.selectbox("Select Transformation Type", ["Translation", "Rotation", "Scaling", "Flipping"])
 
     # Set transformation value
     if transformation_type == 'Translation':
