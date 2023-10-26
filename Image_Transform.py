@@ -5,7 +5,7 @@ import numpy as np
 # Function to perform a translation transformation
 def apply_translation(image, translation_value):
     height, width = image.shape[:2]
-    translation_matrix = np.float32([[1, 0, translation_value[0]], [0, 1, translation_value[1]])
+    translation_matrix = np.float32([1, 0, translation_value[0]], [0, 1, translation_value[1]])
     transformed_image = cv2.warpAffine(image, translation_matrix, (width, height))
     return transformed_image
 
@@ -19,14 +19,14 @@ def apply_rotation(image, rotation_angle):
 # Function to perform a scaling transformation
 def apply_scaling(image, scaling_factor):
     height, width = image.shape[:2]
-    scaling_matrix = np.float32([[scaling_factor, 0, 0], [0, scaling_factor, 0])
+    scaling_matrix = np.float32([scaling_factor, 0, 0], [0, scaling_factor, 0])
     transformed_image = cv2.warpAffine(image, scaling_matrix, (width, height))
     return transformed_image
 
 # Function to perform a shearing transformation
 def apply_shearing(image, shearing_value):
     height, width = image.shape[:2]
-    shearing_matrix = np.float32([[1, shearing_value, 0], [shearing_value, 1, 0])
+    shearing_matrix = np.float32([1, shearing_value, 0], [shearing_value, 1, 0])
     transformed_image = cv2.warpAffine(image, shearing_matrix, (width, height))
     return transformed_image
 
