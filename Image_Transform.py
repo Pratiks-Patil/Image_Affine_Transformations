@@ -12,15 +12,13 @@ def apply_affine_transformation(image, transformation_type, transformation_value
         rotation_matrix = cv2.getRotationMatrix2D((width / 2, height / 2), transformation_value, 1)
         transformed_image = cv2.warpAffine(image, rotation_matrix, (width, height))
     elif transformation_type == 'Scaling':
-        scaling_matrix = np.float32([transformation_value, 0, 0], [0, transformation_value, 0])
+        scaling_matrix = np.float32([[transformation_value, 0, 0], [0, transformation_value, 0]])
         transformed_image = cv2.warpAffine(image, scaling_matrix, (width, height))
     elif transformation_type == 'Shearing':
-        shearing_matrix = np.float32([1, transformation_value, 0], [transformation_value, 1, 0])
-        transformed_image = cv2.warpAffine(image, shearing_matrix, (width, height))
+        transformed_image = cv2.flip(image, 1)
     else:
         transformed_image = image
     return transformed_image
-
 
 # Streamlit app
 st.title('Image Transformation App')
@@ -42,8 +40,7 @@ if uploaded_image is not None:
         transformation_value = st.slider("Select Rotation (degrees)", -180, 180, 0)
     elif transformation_type == 'Scaling':
         transformation_value = st.slider("Select Scaling Factor", 0.1, 3.0, 1.0)
-    else:
-        transformation_value = st.slider("Select Shearing Value", -1.0, 1.0, 0.0)
+    
 
     if st.button("Apply Transformation"):
         transformed_image = apply_affine_transformation(image, transformation_type, transformation_value)
