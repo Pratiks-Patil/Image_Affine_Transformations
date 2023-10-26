@@ -5,9 +5,10 @@ import numpy as np
 # Function to perform a translation transformation
 def apply_translation(image, translation_value):
     height, width = image.shape[:2]
-    translation_matrix = np.float32([1, 0, translation_value[0]], [0, 1, translation_value[1]])
+    translation_matrix = np.float32([[1, 0, translation_value[0]], [0, 1, translation_value[1]], [0, 0, 1]])
     transformed_image = cv2.warpAffine(image, translation_matrix, (width, height))
     return transformed_image
+
 
 # Function to perform a rotation transformation
 def apply_rotation(image, rotation_angle):
