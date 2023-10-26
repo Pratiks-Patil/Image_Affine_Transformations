@@ -16,7 +16,7 @@ def apply_affine_transformation(image, transformation_type, transformation_value
         scaling_matrix = np.float32([[transformation_value, 0, 0], [0, transformation_value, 0]])
         transformed_image = cv2.warpAffine(image, scaling_matrix, (width, height))
     elif transformation_type == 'Shearing':
-        shearing_matrix = np.float32([[1, transformation_value, 0], [transformation_value, 1, 0])
+        shearing_matrix = np.float32([1, transformation_value, 0], [transformation_value, 1, 0])
         transformed_image = cv2.warpAffine(image, shearing_matrix, (width, height))
     else:
         transformed_image = image
