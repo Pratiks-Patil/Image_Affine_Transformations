@@ -40,7 +40,8 @@ if uploaded_image is not None:
         transformation_value = st.slider("Select Rotation (degrees)", -180, 180, 0)
     elif transformation_type == 'Scaling':
         transformation_value = st.slider("Select Scaling Factor", 0.1, 3.0, 1.0)
-    
+    else:
+        transformation_value = st.slider("Select Shearing Value", -1.0, 1.0, 0.0)
 
     if st.button("Apply Transformation"):
         transformed_image = apply_affine_transformation(image, transformation_type, transformation_value)
