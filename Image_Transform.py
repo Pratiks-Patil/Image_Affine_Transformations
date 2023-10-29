@@ -2,7 +2,8 @@ import streamlit as st
 import cv2
 import numpy as np
 
-st.title("Image Affine Transformations Yogesh")
+st.title("Image Affine Transformations WebApp")
+st.subheader("Developed by Pratik")
 
 image = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg"])
 
